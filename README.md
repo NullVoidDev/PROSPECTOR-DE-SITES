@@ -1,38 +1,55 @@
-# Prospector de Sites — Marketplace de plugins do Helio Arreche
+# 🎯 Prospector de Sites — v2.1.0
 
-Plugin para Claude (Cowork / Claude Code) que roda o ciclo completo de prospecção e venda de sites:
+**Plugin para Claude (Cowork) que roda o ciclo completo de prospecção e venda de sites — com CRM local incluso:**
 
-**Achou → Refez → Publicou → Ofertou.**
+**Achou → Refez → Publicou → Ofertou → Acompanhou → Fechou → Contrato.**
 
-1. `/prospectar` — varre o Google Maps atrás de negócios bem avaliados (nota ≥ 4.7) com site ruim e e-mail público, e salva os leads numa planilha do Google Sheets.
-2. `/redesenhar` — recria as páginas dos leads com estética premium: conteúdo real aprimorado, fotos e logo originais, seções novas relevantes. Gera junto o editor visual e o comparador antes/depois.
-3. `/editor` — edita textos e imagens da página direto no navegador e exporta a versão final.
-4. `/publicar` — sobe as páginas na sua hospedagem HostGator e devolve as URLs públicas.
-5. `/proposta` — escreve o e-mail de proposta (rapport real, sem preço) e cria o rascunho no seu Gmail.
-6. `/setup` — configura tudo uma única vez (assinatura, nichos, conexão com a HostGator).
+De graça, rodando no seu computador, sem mensalidade.
+
+## O que a v2 faz
+
+| Comando | O que acontece |
+|---|---|
+| `/setup` | Configura tudo uma vez (pasta, assinatura, nichos) e entrega o manual + dashboard |
+| `/prospectar` | Varre o Google Maps: negócios nota ≥ 4.7 com site fraco E e-mail público → planilha no Google Sheets + CRM |
+| `/redesenhar` | Recria as páginas com estética premium (fotos/logo/conteúdo REAIS) + editor visual + comparador antes/depois |
+| `/editor` | Edita texto e imagem da página no navegador, sem código |
+| `/publicar` | Publica na HostGator SOZINHO (publicador automático, sem cPanel) + página-capa da proposta + HTTPS validado |
+| `/proposta` | E-mail com rapport real, checklist anti-spam e a capa personalizada como link |
+| `/respostas` | Lê seu Gmail e move o card sozinho quando o cliente responde (agende diário!) |
+| `/followup` | 3+ dias sem resposta? Gera o lembrete gentil — 1 por lead, nunca repete |
+| `/contrato` | Fechou? Folha A4 imprimível + Word TRAVADO (cliente só preenche onde você deixar) |
+
+## 📊 CRM local (dashboard)
+
+Kanban com drag & drop, funil, clientes, sites, comparador, follow-ups, contratos e painel financeiro (recebido, a receber, MRR e projeção 12 meses) — tudo num banco SQLite **na sua pasta**. Duplo clique no `iniciar-dashboard.bat` (Windows) ou `iniciar-dashboard.command` (Mac). Requisito: [Python](https://www.python.org/downloads/) (marque "Add to PATH").
 
 ## Como instalar
 
-No Claude Code:
+**No Claude Cowork:** Plugins → Gerenciar plugins → Adicionar marketplace → cole a URL deste repositório → instale o **prospector-de-sites** → rode `/setup`.
 
+**No Claude Code:**
 ```
 /plugin marketplace add ArrecheNeto/PROSPECTOR-DE-SITES
 /plugin install prospector-de-sites@arrecheneto-plugins
 ```
 
-No Claude Cowork (desktop): Configurações → Plugins → Adicionar marketplace → cole a URL deste repositório → instale o **prospector-de-sites**.
+## 🔄 Já tem o plugin e não atualiza?
+
+Re-adicionar o link NÃO atualiza (fica em cache). Faça:
+```
+/plugin marketplace update arrecheneto-plugins
+```
+e reinicie o app — a versão certa é a **2.1.0** (confira em Gerenciar plugins). Se não subir: desinstale o plugin → remova o marketplace → feche o app → adicione e instale de novo. A partir da 2.1.0 a atualização é automática (autoUpdate ativado).
 
 ## Requisitos
 
-- Claude Cowork (ou Claude Code) com extensão Claude in Chrome conectada
-- Conector do Gmail e do Google Drive
-- Uma pasta conectada no Cowork (config, leads e sites ficam nela)
-- Hospedagem HostGator com acesso ao cPanel
+Claude Cowork · extensão Claude in Chrome · conectores Gmail e Google Drive · hospedagem HostGator (plano M+) · Python (para o dashboard e o publicador) · Windows ou Mac.
 
-## Segurança
+## Manual
 
-A senha do cPanel nunca é digitada no chat: você preenche o campo `"senha"` no arquivo `prospector-config.json`, que fica somente no seu computador.
+O `/setup` entrega o [manual completo](prospector-de-sites/manual.html) na sua pasta — passo a passo de tudo, incluindo a seção "E no Mac?" e os problemas comuns.
 
 ---
 
-Criado por [Helio Arreche](https://github.com/ArrecheNeto) · Aprenda a usar no meu canal do YouTube
+Feito por **Helio Arreche** · [YouTube](https://youtube.com/@helioarreche) · [Instagram @helioarreche](https://instagram.com/helioarreche) · Série completa do plugin no canal 🎬
