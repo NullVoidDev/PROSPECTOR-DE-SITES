@@ -52,8 +52,8 @@ Qualquer agente que venha a atuar no código ou fluxos deste plugin deve respeit
 1. **Fidelidade Factual:** É terminantemente proibido inventar fatos, serviços que a empresa não oferece, avaliações fictícias ou certificados inexistentes. O texto deve ser aprimorado com técnicas de copy (ex: framework PAS), mas focado no que é real.
 2. **Ativos Reais:** O uso do logo real e de fotos reais do site original do cliente é obrigatório. As imagens são referenciadas pelas URLs originais para manter a autenticidade.
 3. **Preservação de Identidade:** Manter a paleta de cores original do negócio, aplicando refinamentos harmônicos se a paleta antiga for muito saturada ou de baixo contraste.
-4. **Responsividade Inegociável:** Os sites gerados devem ser perfeitamente responsivos (de 360px a 1440px) e estar autocontidos em um único arquivo HTML (CSS inline no `<head>`, sem dependências externas de build).
-5. **Entregável Duplo:** Cada redesign gera o site original do cliente (`[slug].html`), a versão com o editor visual habilitado (`[slug]-editor.html`), e atualiza o arquivo global `comparar.html`.
+4. **Responsividade Inegociável:** Os sites gerados devem ser perfeitamente responsivos (de 360px a 1440px) e estar estruturados em diretórios organizados na pasta `clientes_gerados/[slug]/` com HTML, CSS, JS e imagens locais, sem dependências externas de build.
+5. **Entregável Estruturado:** Cada redesign gera o site estruturado na pasta `/clientes_gerados/[slug]/` (`index.html`), a versão com o editor visual habilitado (`index-editor.html`), assets locais (`assets/css/style.css`, `assets/js/main.js`, `assets/img/`), e atualiza o arquivo global `comparar.html`.
 
 ### C. Estratégia de E-mail de Proposta e Anti-Spam
 1. **Curto e Focado em Curiosidade:** O e-mail deve ter de 120 a 180 palavras, conter rapport personalizado na primeira linha (baseado em avaliações reais) e focar em fazer o cliente clicar no link do redesign.

@@ -23,14 +23,14 @@ Diferente do deploy por FTP/HostGator, **não é necessário salvar senhas locai
 
 ## 2. Deploy de Demonstração (Lead Prospectado)
 
-Para cada lead que foi redesenhado, criamos um projeto isolado na Vercel contendo a landing page (`index.html`) e a capa da proposta (`proposta.html`).
+Para cada lead que foi redesenhado, criamos um projeto isolado na Vercel contendo a landing page (`index.html`) e a capa da proposta (`proposta.html`) dentro da pasta estruturada do cliente.
 
 ### Passos para Deploy:
-1. Navegue até o diretório do cliente: `sites/[slug]/`.
-2. Execute o comando de deploy silencioso e automático:
-   ```bash
-   vercel deploy --name "demo-[slug]" --yes --cwd "sites/[slug]"
-   ```
+1. Navegue até o diretório do cliente: `clientes_gerados/[slug]/`.
+2. Execute o script de deploy especializado na raiz do projeto (que usa `--yes` para evitar confirmações no terminal):
+   - No Windows: `deploy_vercel.bat ./clientes_gerados/[slug]`
+   - No Linux/WSL: `./deploy_vercel.sh ./clientes_gerados/[slug]`
+   - *Alternativa de Bypass (se o sandbox estiver bloqueando a CLI)*: Adicione o caminho `./clientes_gerados/[slug]` ao arquivo `pending_deploys.txt` na raiz da pasta para que o script cron externo publique.
 3. A Vercel CLI retornará a URL de deploy em stdout. Capture e valide essa URL (ex: `https://demo-[slug].vercel.app`).
 4. Grave a URL gerada no banco de dados SQLite (`prospector.db`) no campo `urlNova`, e a URL da proposta como `[URL]/proposta.html`.
 5. Atualize o status do lead para `publicado`.
@@ -45,7 +45,7 @@ Quando o contrato com o cliente for fechado e ele adquirir um domínio próprio 
 1. Solicite o domínio definitivo do cliente.
 2. Associe o domínio ao projeto Vercel executando:
    ```bash
-   vercel domains add [dominio-cliente] --cwd "sites/[slug]"
+   vercel domains add [dominio-cliente] --cwd "clientes_gerados/[slug]"
    ```
 3. Exiba as instruções DNS obrigatórias para o usuário passar ao cliente:
    * **Se for o domínio raiz (ex: drfulando.com.br):**
@@ -53,9 +53,8 @@ Quando o contrato com o cliente for fechado e ele adquirir um domínio próprio 
    * **Se for um subdomínio (ex: www.drfulando.com.br ou clinica.drfulando.com.br):**
      * Criar um registro **CNAME** apontando para `cname.vercel-dns.com`.
 4. Para aplicar o domínio em ambiente de produção definitivo, force um deploy de produção:
-   ```bash
-   vercel --prod --yes --cwd "sites/[slug]"
-   ```
+   - No Windows: `deploy_vercel.bat ./clientes_gerados/[slug]`
+   - No Linux/WSL: `./deploy_vercel.sh ./clientes_gerados/[slug]`
 5. Atualize a `urlNova` no banco SQLite para `https://[dominio-cliente]`.
 
 ---

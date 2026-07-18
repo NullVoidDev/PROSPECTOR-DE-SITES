@@ -90,12 +90,12 @@ class App(SimpleHTTPRequestHandler):
             if not dominio:
                 return self._json(400, {'erro': 'Domínio é obrigatório'})
             import subprocess
-            pasta_cliente = os.path.join(PASTA, 'sites', slug)
+            pasta_cliente = os.path.join(PASTA, 'clientes_gerados', slug)
             if not os.path.exists(pasta_cliente):
                 os.makedirs(pasta_cliente, exist_ok=True)
             try:
                 # Executa vercel domains add [dominio] --yes
-                res = subprocess.run(['vercel', 'domains', 'add', dominio, '--yes'], cwd=pasta_cliente, capture_output=True, text=True, shell=True)
+                res = subprocess.run(['npx', 'vercel', 'domains', 'add', dominio, '--yes'], cwd=pasta_cliente, capture_output=True, text=True, shell=True)
                 if res.returncode != 0:
                     return self._json(500, {'erro': 'Erro no Vercel CLI: ' + res.stderr})
                 

@@ -31,7 +31,7 @@ O plugin mantém um painel de controle na sua pasta: `prospector.db` (banco SQLi
 
 ## Onde ficam os dados
 
-Tudo na pasta conectada: `prospector-config.json` (preferências e credenciais), `leads.md` (pipeline) e `sites/[slug]/` (páginas criadas).
+Tudo na pasta conectada: `prospector-config.json` (preferências e credenciais), `leads.md` (pipeline) e `clientes_gerados/[slug]/` (páginas estruturadas criadas).
 
 ## Como atualizar
 

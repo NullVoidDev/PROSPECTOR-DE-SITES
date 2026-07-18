@@ -45,10 +45,10 @@ Salve tudo em `prospector-config.json` na pasta conectada, neste formato:
 ```
 
 Rode o teste de publicação seguindo a skill `deploy-vercel`:
-1. Crie uma pasta temporária `sites/teste/` e salve nela um arquivo `index.html` simples (contendo `<h1>Funcionou!</h1>`).
-2. Execute o deploy de teste com a CLI:
+1. Crie uma pasta temporária `clientes_gerados/teste/` e salve nela um arquivo `index.html` simples (contendo `<h1>Funcionou!</h1>`).
+2. Execute o deploy de teste com a CLI ou script de deploy:
    ```bash
-   vercel deploy --name prospector-teste --yes --cwd sites/teste
+   deploy_vercel.bat ./clientes_gerados/teste
    ```
 3. Capture a URL gerada pela Vercel e mostre ao usuário. Se funcionar, a integração está validada! Se falhar, diagnostique antes de concluir.
 
